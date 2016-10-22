@@ -22,7 +22,7 @@ const handleSearchAttends = (state) => searchKey => {
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
   handleSearchAttends: handleSearchAttends(state),
-  allAttendees: state.attendees.list.filter(attend => !attend.checked_at),
+  allAttendees: state.attendees.list.filter(attend => attend.checked_at),
   list: handleSearchAttends(state)()
 })
 
