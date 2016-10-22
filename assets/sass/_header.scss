@@ -1,0 +1,98 @@
+@include respond-to('basic') {
+  .header {
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 90px 10px 10px;
+    background: #000d1d url(../img/background-header-topo.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    height: 100vh;
+    text-align: center;
+
+    .title {
+      display: block;
+      font-size: $font-size-xlarge;
+      font-weight: 300;
+      line-height: 1.3;
+      margin: 0 auto;
+    }
+    .subtitle {
+      font-weight: 300;
+      font-size: 20px;
+    }
+
+    .wrap-buttons {
+      margin-top: 55px;
+
+      .btn {
+        font-size: 1.2em;
+        height: 40px;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 300px;
+      }
+    }
+  }
+}
+
+@include respond-to('md') {
+  .header {
+    padding-top: 200px;
+    .title{
+      font-size: 50px;
+    }
+  }
+}
+
+@include respond-to('lg') {
+  .header {
+    padding-top: 85px;
+    .title{
+      font-size: 60px;
+    }
+  }
+}
+
+/**
+ * VH and VW units can cause issues on iOS devices: http://caniuse.com/#feat=viewport-units
+ *
+ * To overcome this, create media queries that target the width, height, and orientation of iOS devices.
+ * It isn't optimal, but there is really no other way to solve the problem. In this example, I am fixing
+ * the height of element `.header` —which is a full width and height cover image.
+ *
+ * iOS Resolution Quick Reference: http://www.iosres.com/
+ * https://gist.githubusercontent.com/pburtchaell/e702f441ba9b3f76f587/raw/072ca180c1507e2dbee1e7d66be967bd9cdaad4e/styles.css
+ */
+
+
+/**
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .header {
+    height: 1024px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .header {
+    height: 768px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .header {
+    height: 500px;
+  }
+}

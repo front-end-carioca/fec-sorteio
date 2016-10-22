@@ -1,0 +1,26 @@
+.programacao {
+  background: $color-gray;
+  color: #fff;
+
+  .nav-tabs {
+    >li {
+      a {
+        color: #00B29E;
+      }
+      > a:focus,
+      > a:hover,
+      &.active>a,
+      &.active>a:focus,
+      &.active>a:hover {
+        border-bottom: 1px solid #00B29E;
+        color: #00B29E;
+      }
+    }
+  }
+  .tab-pane {
+    .card {
+      background: #00B29E;
+      min-height: 190px;
+    }
+  }
+}

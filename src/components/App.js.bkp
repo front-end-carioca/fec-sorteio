@@ -1,0 +1,128 @@
+import React, { Component } from 'react';
+import { Tabs, Tab, Button } from 'react-bootstrap';
+
+const shuffle = (array) => {
+ var currentIndex = array.length, temporaryValue, randomIndex;
+
+ // While there remain elements to shuffle...
+ while (0 !== currentIndex) {
+
+   // Pick a remaining element...
+   randomIndex = Math.floor(Math.random() * currentIndex);
+   currentIndex -= 1;
+
+   // And swap it with the current element.
+   temporaryValue = array[currentIndex];
+   array[currentIndex] = array[randomIndex];
+   array[randomIndex] = temporaryValue;
+ }
+
+ return array;
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    let raffled = [];
+    if(typeof window !== 'undefined' && window.localStorage.getItem('listSorted')){
+      raffled = JSON.parse(window.localStorage.getItem('listSorted'));
+    }
+
+    this.state = {
+      list: [],
+      allList: [],
+      sorted: false,
+      raffled: raffled
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      allList: nextProps.allAttendees,
+      list: nextProps.allAttendees
+    })
+  }
+
+  onClickSortMe() {
+    const list = this.state.list.filter(user => this.state.raffled.indexOf(user.email) === -1)
+    const user = shuffle(list)[0];
+
+    if (!user) return;
+
+    const raffled = this.state.raffled;
+    raffled.unshift(user.email);
+    if(typeof window !== 'undefined') window.localStorage.setItem('listSorted', JSON.stringify(raffled))
+    this.setState({
+      sorted: true,
+      raffled
+    })
+  }
+
+  handleChange(e) {
+    this.setState({
+      list: this.props.handleSearchAttends(e.target.value)
+    });
+  }
+
+
+  render() {
+    const { list, allList, raffled, sorted } = this.state;
+    return <div>
+      <h1>FEC 2016</h1>
+      <Tabs id="App-FEC">
+        <Tab eventKey={1} title="Check-in">
+          <input type="text" placeholder="email do participante" value={this.props.searchText} onChange={this.handleChange.bind(this)} />
+          <br />
+          <div>
+            { allList.map((email, index) => {
+              const listFiltered = list.filter(user => user.email === email)
+              const item = listFiltered.length > 0 ? listFiltered[0] : false;
+              return item && <div key={index}>
+                <p>Name: {item.name}</p>
+                <p>Email: {item.email}</p>
+              </div>
+            })}
+          </div>
+        </Tab>
+        <Tab eventKey={2} title="Sorteio">
+          <br />
+          <div style={{textAlign: 'center'}}><Button bsSize="large" onClick={this.onClickSortMe.bind(this)}>Sort Me!</Button></div>
+          <div>
+            { sorted && raffled.slice(0,1).map((email, index) => {
+              const listFiltered = list.filter(user => user.email === email)
+              const item = listFiltered.length > 0 ? listFiltered[0] : false;
+              return item && <div key={index}>
+                <p>Name: {item.name}</p>
+                <p>Email: {item.email}</p>
+              </div>
+            })}
+          </div>
+          <br/>
+          <br/>
+          <div>
+          { sorted && raffled.slice(1,).map((email, index) => {
+            const listFiltered = list.filter(user => user.email === email)
+            const item = listFiltered.length > 0 ? listFiltered[0] : false;
+            return item && <div key={index}>
+              <p>Name: {item.name}</p>
+              <p>Email: {item.email}</p>
+            </div>
+          })}
+          { !sorted && raffled.slice(0,).map((email, index) => {
+            const listFiltered = list.filter(user => user.email === email)
+            const item = listFiltered.length > 0 ? listFiltered[0] : false;
+            return item && <div key={index}>
+              <p>Name: {item.name}</p>
+              <p>Email: {item.email}</p>
+            </div>
+          })}
+          </div>
+        </Tab>
+      </Tabs>
+
+    </div>;
+  }
+}
+
+export default App;

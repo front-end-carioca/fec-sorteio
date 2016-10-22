@@ -1,0 +1,152 @@
+body {
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+a,
+button {
+  transition: all $transition-out ease-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    transition: all $transition-in ease-in;
+  }
+}
+
+.svgstore {
+  height: 0;
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+}
+
+.btn {
+  &,
+  &:hover,
+  &:focus {
+    text-shadow: none;
+  }
+}
+
+.btn-default {
+  background: rgba(255,255,255, 0.5);
+  border-color: rgba(255,255,255, 0.5);
+  color: #fff;
+}
+.btn-primary {
+  background: $color-yellow;
+  border-color: $color-yellow;
+  color: $color-gray;
+  &:hover,
+  &:focus {
+    background: #00B29E;
+    border-color: #00B29E;
+  }
+}
+.section {
+  box-sizing: content-box;
+  padding: 30px 15px;
+  overflow: hidden;
+  &-title {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 36px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &-subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 25px;
+  }
+}
+
+.nav-tabs {
+  border:none;
+  margin-bottom: 20px;
+  text-align: center;
+  >li {
+    float: none;
+    display: inline-block;
+    margin-bottom: 0;
+    a {
+      border: none;
+      font-size: 1.15em;
+      padding: 5px;
+    }
+    > a:focus,
+    > a:hover,
+    &.active>a,
+    &.active>a:focus,
+    &.active>a:hover {
+      border: none;
+      background: transparent;
+    }
+  }
+}
+
+.tab-pane {
+  .card {
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px 20px;
+    min-height: 300px;
+    margin-bottom: 30px;
+
+    .schedule {
+      margin: 10px 0 5px;
+      font-size: 1.3em;
+    }
+    .title {
+      font-size: 1.5em;
+      font-weight: 400;
+    }
+    .panelist {
+      font-size: 1.15em;
+      font-weight: 300;
+      strong {
+        font-weight: 400;
+      }
+    }
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        line-height: 2em;
+        margin-bottom: 10px;
+
+        .marker {
+          margin-right: 5px;
+          padding: 0 10px;
+          background: $color-yellow;
+          color: $color-gray;
+          font-weight: bold;
+          border-radius: 5px;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+
+@include respond-to('basic') {}
+
+@include respond-to('md') {
+  .section {
+    &-subtitle {
+      margin-bottom: 50px;
+    }
+  }
+
+  .container {
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+  }
+}

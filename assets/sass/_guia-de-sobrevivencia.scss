@@ -1,0 +1,40 @@
+.guia-de-sobrevivencia {
+  background: #00b29e;
+  color: #fff;
+
+  .nav-tabs {
+    >li {
+      a {
+        color: #FFF;
+      }
+      > a:focus,
+      > a:hover,
+      &.active>a,
+      &.active>a:focus,
+      &.active>a:hover {
+        border-bottom: 1px solid $color-gray;
+        color: $color-gray;
+      }
+    }
+  }
+  .tab-pane {
+    .card {
+      background: $color-gray;
+
+      > a {
+        color: $color-yellow;
+      }
+    }
+  }
+
+}
+
+@include respond-to('md') {
+  .guia-de-sobrevivencia {
+    .table {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

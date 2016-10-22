@@ -1,0 +1,32 @@
+.sobre {
+  @include flexbox;
+  padding: 20px 0 40px;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+
+  .logo {
+    @include flex(1);
+    text-align: center;
+    img {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .content {
+    @include flex(1);
+    color: $color-gray;
+    padding-right: 20px;
+    margin: auto;
+    .title {
+      font-size: 3em;
+      font-weight: 400;
+    }
+    p {
+      text-align: left;
+      font-size: 1.2em;
+      line-height: 1.5em;
+      margin-bottom: 30px;
+    }
+  }
+}

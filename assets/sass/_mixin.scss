@@ -1,0 +1,20 @@
+$break-md: "min-width: 48em";
+$break-lg: "min-width: 64em";
+$break-xl: "min-width: 80em";
+
+@mixin respond-to($media) {
+  @if $media == 'basic' {
+    @content;
+  }
+  @else if $media == 'md' {
+    @media only screen and ($break-md) { @content; }
+  }
+  @else if $media == 'lg' {
+    @media only screen and ($break-lg) { @content; }
+  }
+  @else if $media == 'xl' {
+    @media only screen and ($break-xl) { @content; }
+  }
+}
+
+@import './vendor/flexbox/_flexbox';

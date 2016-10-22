@@ -1,0 +1,9 @@
+{
+  "eventickAPIUrl": "https://www.eventick.com.br/api/v1/events",
+  "eventId": "25205",
+  "endpoint": "attendees.json",
+  "headersApi": {
+    "Authorization":"Basic czhkTC1aM24yanNmcGFETEh4dS03YTFqN0V0Z2JRaXhGUTo=",
+    "Content-Type":"application/json"
+  }
+}

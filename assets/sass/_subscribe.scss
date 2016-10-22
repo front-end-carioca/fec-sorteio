@@ -1,0 +1,39 @@
+.subscribe {
+  align-items: center;
+  padding: 20px 10px;
+  text-align: center;
+  background: $color-gray;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+
+
+    background-color: #F26544;
+    -webkit-transform: skew(30deg);
+    -ms-transform: skew(30deg);
+    transform: skew(30deg);
+  }
+  .title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    color: #FFF;
+    text-transform: uppercase;
+  }
+  .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+  .submit {
+    background-color: #fc0;
+    text-decoration: none;
+    color: #333;
+    padding: 7px 20px;
+    border-radius: 5px;
+  }
+}
