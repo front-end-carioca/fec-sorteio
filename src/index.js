@@ -7,6 +7,9 @@ import createStore from './store';
 import routes from './routes';
 
 const config = require('./config.json');
+const restoreLocalStorage = require('../localStorage.json');
+localStorage.setItem('listSorted', restoreLocalStorage.listSorted);
+
 const initialState = {
   config
 };

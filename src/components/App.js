@@ -72,7 +72,7 @@ class App extends Component {
       <Grid>
         <h1 style={{textAlign: 'center'}}>Sorteio - FEC 2016</h1>
         <br />
-        <div style={{textAlign: 'center'}}><Button bsSize="large" onClick={this.onClickSortMe.bind(this)}>Sort Me!</Button></div>
+        <div style={{textAlign: 'center'}}><Button bsSize="large" onClick={this.onClickSortMe.bind(this)}>Sorteio Agora!</Button></div>
         <br />
         <Row>
           <Col xs={10} md={8}>
